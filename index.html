@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Bites - Premium Culinary Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes zoomSlow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-zoom { animation: zoomSlow 20s ease-in-out infinite; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+        }
+        
+        .hover-lift {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(217, 119, 6, 0.3);
+        }
+        
+        .swiper-button-next, .swiper-button-prev { 
+            color: #d97706; 
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: #d4d4d4;
+            opacity: 1;
+        }
+        
+        .swiper-pagination-bullet-active { 
+            background: #d97706;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .nav-underline {
+            position: relative;
+        }
+
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #d97706, #f59e0b);
+            transition: width 0.3s ease;
+        }
+
+        .nav-underline:hover::after {
+            width: 100%;
+        }
+
+        .pattern-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+    <!-- Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-md shadow-lg z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-5">
+                <a href="#" class="text-3xl font-bold gradient-text">Warung Jowo</a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#hero" class="text-base font-medium text-gray-700 hover:text-amber-600 transition-all nav-underline">Home</a>
+                    <a href="#about" class="text-base font-medium text-gray-700 hover:text-amber-600 transition-all nav-underline">About</a>
+                    <a href="#menu" class="text-base font-medium text-gray-700 hover:text-amber-600 transition-all nav-underline">Menu</a>
+                    <a href="#gallery" class="text-base font-medium text-gray-700 hover:text-amber-600 transition-all nav-underline">Gallery</a>
+                    <a href="#reservations" class="text-base font-medium text-gray-700 hover:text-amber-600 transition-all nav-underline">Book</a>
+                    <a href="#contact" class="text-base font-medium text-gray-700 hover:text-amber-600 transition-all nav-underline">Contact</a>
+                </nav>
+                <a href="#reservations" class="hidden md:inline-flex px-6 py-3 rounded-full text-white gradient-bg hover:shadow-2xl transition-all transform hover:scale-105 font-semibold">Book Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="img/makananbg.jpg" alt="Dining" class="w-full h-full object-cover animate-zoom">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+        </div>
+        <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in-up" style="animation-delay:0.2s;opacity:0">Resto Kuliner Jawa</h1>
+            <p class="text-xl sm:text-2xl lg:text-3xl mb-12 animate-fade-in-up" style="animation-delay:0.4s;opacity:0">Nikmati rasa asli masakan Jawa sing digawe kanthi tresno lan warisan leluhur</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style="animation-delay:0.6s;opacity:0">
+                <a href="#menu" class="px-10 py-5 border-2 border-white rounded-full text-lg font-semibold hover:bg-white hover:text-amber-600 transition-all transform hover:scale-110">Lihat Menu</a>
+                <a href="#reservations" class="px-10 py-5 rounded-full text-lg font-semibold text-white gradient-bg hover:shadow-2xl transition-all transform hover:scale-110">Reservasi</a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-32 bg-gradient-to-br from-white via-amber-50 to-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-amber-200 rounded-full filter blur-3xl opacity-20 animate-float"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-orange-200 rounded-full filter blur-3xl opacity-20 animate-float" style="animation-delay:1.5s"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div>
+                        <span class="text-amber-600 font-semibold text-sm uppercase tracking-widest">Sejak 2015</span>
+                        <h2 class="text-5xl sm:text-6xl font-bold gradient-text mt-4 mb-6">Crita Warung Jowo</h2>
+                    </div>
+                    <p class="text-lg text-gray-700">Didegake ing taun 2015, Rasa Jawi minangka wujud katresnane marang kuliner tradisional Jawa. Juru masak kita duwe pengalaman luwih saka <span class="font-bold text-amber-600">25 taun</span>  ngolah masakan Jawa kanthi resep turun-temurun. </p>
+                    <p class="text-lg text-gray-700">Kita pracaya marang kelestarian budaya, bahan lokal berkualitas, lan nggawe pengalaman kuliner sing ora bakal kelalen kanggo saben tamu.</p>
+                    <div class="flex flex-wrap gap-6 pt-4">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold gradient-text">20+</div>
+                            <div class="text-sm text-gray-600">Tahun Pengalaman</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold gradient-text">50+</div>
+                            <div class="text-sm text-gray-600">Hidangan Khas</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-amber-400 to-orange-400 rounded-3xl opacity-20 blur-2xl"></div>
+                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Chef" class="relative rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu -->
+<section id="menu" class="py-16 bg-gradient-to-b from-gray-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <span class="text-amber-600 font-semibold text-sm uppercase tracking-widest">Kelezatan Legendaris</span>
+            <h2 class="text-4xl sm:text-5xl font-bold gradient-text mt-2 mb-4">Menu Warung Jowo</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Simfoni rasa dalam setiap suapan rempah warisan leluhur.</p>
+        </div>
+        
+        <div class="relative px-4 sm:px-12"> 
+            <div class="swiper menu-swiper">
+                <div class="swiper-wrapper pb-10"> 
+                    
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover-lift h-full flex flex-col border border-gray-100">
+                            <div class="relative h-64 overflow-hidden shrink-0">
+                                <img src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bebek Goreng" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700">
+                                <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm"><span class="text-amber-600 font-bold">★ 5.0</span></div>
+                                <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Andalan Kami</div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow text-center">
+                                <h4 class="text-xl font-bold mb-2">Bebek Goreng Rempah</h4>
+                                <p class="text-gray-500 text-sm line-clamp-3">Bebek muda empuk dengan bumbu ungkep rahasia dan sambal korek pedas yang menggugah selera.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover-lift h-full flex flex-col border border-gray-100">
+                            <div class="relative h-64 overflow-hidden shrink-0">
+                                <img src="img/gado.jpg" alt="Gado-gado" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700">
+                                <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm"><span class="text-amber-600 font-bold">★ 4.9</span></div>
+                                <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Vegetarian</div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow text-center">
+                                <h4 class="text-xl font-bold mb-2">Gado-Gado Kraton</h4>
+                                <p class="text-gray-500 text-sm line-clamp-3">Harmoni sayuran organik segar dengan siraman saus kacang tanah racikan spesial yang gurih, lembut, dan sedikit pedas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover-lift h-full flex flex-col border border-gray-100">
+                            <div class="relative h-64 overflow-hidden shrink-0">
+                                <img src="img/rujak.jpg" alt="Rujak Cingur" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700">
+                                <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm"><span class="text-amber-600 font-bold">★ 4.8</span></div>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow text-center">
+                                <h4 class="text-xl font-bold mb-2">Rujak Cingur Prabu</h4>
+                                <p class="text-gray-500 text-sm line-clamp-3">Kuliner autentik Jawa Timur yang memadukan cingur sapi pilihan dengan bumbu petis udang premium yang mantap.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                      <div class="swiper-slide h-auto">
+                        <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover-lift h-full flex flex-col border border-gray-100">
+                            <div class="relative h-64 overflow-hidden shrink-0">
+                                <img src="img/rawon.jpg" alt="Rujak Cingur" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700">
+                                <div class="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded-full text-sm"><span class="text-amber-600 font-bold">★ 4.8</span></div>
+                            </div>
+                           <div class="p-6 flex flex-col flex-grow text-center">
+                              <h4 class="text-xl font-bold mb-2">Rawon Brongkos Jati</h4>
+                              <p class="text-gray-500 text-sm line-clamp-3">Sup daging sapi legendaris dengan kuah hitam kluwek yang kaya rempah, disajikan hangat dengan telur asin dan tauge segar.</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+              <div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+
+<div class="swiper-pagination !bottom-0"></div>
+        </div>
+    </div>
+</section>
+    <!-- Gallery -->
+    <section id="gallery" class="py-32 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="text-amber-600 font-semibold text-sm uppercase tracking-widest">Visual Experience</span>
+                <h2 class="text-5xl sm:text-6xl font-bold gradient-text mt-4 mb-6">Gallery</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="relative group overflow-hidden rounded-3xl shadow-xl hover-lift h-80">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Restaurant interior" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-semibold text-lg">Elegant Interior</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-3xl shadow-xl hover-lift h-80">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Table setting" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-semibold text-lg">Perfect Settings</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-3xl shadow-xl hover-lift h-80">
+                    <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chef preparing" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-semibold text-lg">Master Chefs</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-3xl shadow-xl hover-lift h-80">
+                    <img src="img/5-restoran-jawa-di-bekasi-ini-punya-rawon-hingga-gudeg-yang-mantap-poll.png" alt="Wine selection" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p class="text-white font-semibold text-lg">Decoration</p>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservations -->
+    <section id="reservations" class="py-32 bg-gradient-to-br from-gray-900 via-amber-900 to-gray-900 text-white pattern-bg relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-20 left-20 w-64 h-64 bg-amber-400 rounded-full filter blur-3xl animate-float"></div>
+            <div class="absolute bottom-20 right-20 w-96 h-96 bg-orange-400 rounded-full filter blur-3xl animate-float" style="animation-delay:1s"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-amber-400 font-semibold text-sm uppercase tracking-widest">Reserve Your Table</span>
+                <h2 class="text-5xl sm:text-6xl font-bold mt-4 mb-6">Reservasi Sekarang</h2>
+                <p class="text-xl text-gray-300">Amankan tempat Anda untuk momen makan malam istimewa bersama keluarga atau rekan bisnis</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 sm:p-12 shadow-2xl">
+               <form class="space-y-6" onsubmit="kirimReservasi(event)">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+            <label class="block text-sm font-semibold mb-2">Nama Lengkap</label>
+            <input type="text" id="res-nama" required class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/50 text-white placeholder-gray-400 transition-all" placeholder="Nama Kamu">
+        </div>
+        <div>
+            <label class="block text-sm font-semibold mb-2">Email</label>
+            <input type="email" id="res-email" required class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/50 text-white placeholder-gray-400 transition-all" placeholder="nama@example.com">
+        </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+            <label class="block text-sm font-semibold mb-2">No Hp</label>
+            <input type="tel" id="res-hp" required class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/50 text-white placeholder-gray-400 transition-all" placeholder="0812xxxx">
+        </div>
+        <div>
+            <label class="block text-sm font-semibold mb-2">Tanggal</label>
+            <input type="date" id="res-tanggal" required class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/50 text-white transition-all">
+        </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+            <label class="block text-sm font-semibold mb-2">Waktu</label>
+            <select id="res-waktu" class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/50 text-white transition-all">
+                <option class="bg-gray-800">12:00</option>
+                <option class="bg-gray-800">13:00</option>
+                <option class="bg-gray-800">14:00</option>
+                <option class="bg-gray-800">18:00</option>
+                <option class="bg-gray-800">19:00</option>
+                <option class="bg-gray-800">20:00</option>
+                <option class="bg-gray-800">21:00</option>
+            </select>
+        </div>
+        <div>
+            <label class="block text-sm font-semibold mb-2">Tamu</label>
+            <select id="res-tamu" class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/50 text-white transition-all">
+                <option class="bg-gray-800">1 Orang</option>
+                <option class="bg-gray-800">2 Orang</option>
+                <option class="bg-gray-800">3 Orang</option>
+                <option class="bg-gray-800">4 Orang</option>
+                <option class="bg-gray-800">5+ Orang (Rombongan)</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <label class="block text-sm font-semibold mb-2">Permintaan Khusus</label>
+        <textarea id="res-pesan" rows="4" class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/50 text-white placeholder-gray-300 transition-all" 
+        placeholder="Alergi, acara spesial, atau posisi meja..."></textarea>
+    </div>
+    <button type="submit" class="w-full px-8 py-4 rounded-xl gradient-bg text-white font-bold text-lg hover:shadow-2xl transition-all transform hover:scale-105">Kirim Konfirmasi ke WhatsApp</button>
+</form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+<section id="contact" class="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-amber-600 font-semibold text-sm uppercase tracking-widest">Hubungi Kami</span>
+                <h2 class="text-4xl sm:text-5xl font-bold gradient-text mt-2 mb-4">Lokasi & Kontak</h2>
+                <p class="text-gray-600">Mampir yuk, kami siap menyambut Anda dengan hidangan hangat.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover-lift text-center border border-gray-100">
+                    <div class="w-14 h-14 mx-auto mb-6 rounded-full gradient-bg flex items-center justify-center shadow-md">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Alamat</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Jl. Warisan Budaya No. 123<br>Kuliner District, Yogyakarta</p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover-lift text-center border border-gray-100">
+                    <div class="w-14 h-14 mx-auto mb-6 rounded-full gradient-bg flex items-center justify-center shadow-md">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Telepon</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">+62 (853) 3113-2617<br>Setiap Hari: 12:00 - 22:00</p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover-lift text-center border border-gray-100">
+                    <div class="w-14 h-14 mx-auto mb-6 rounded-full gradient-bg flex items-center justify-center shadow-md">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Email</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">halo@rasajawi.com<br>reservasi@rasajawi.com</p>
+                </div>
+            </div>
+
+            <div class="w-full h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.973479632832!2d110.3731872!3d-7.7926527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57863f82f255%3A0x6ec0c55138f6b063!2sMalioboro%20Yogyakarta!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                    class="w-full h-full border-0" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-3xl font-bold gradient-text mb-4">Warung Jowo</h3>
+                    <p class="text-gray-400 mb-6">Rasakan seni kuliner terbaik dalam suasana keanggunan dan istimewa</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 rounded-full bg-white/10 hover:bg-amber-600 flex items-center justify-center transition-all transform hover:scale-110">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-white/10 hover:bg-amber-600 flex items-center justify-center transition-all transform hover:scale-110">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-white/10 hover:bg-amber-600 flex items-center justify-center transition-all transform hover:scale-110">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-gray-400 hover:text-amber-600 transition-colors">About Us</a></li>
+                        <li><a href="#menu" class="text-gray-400 hover:text-amber-600 transition-colors">Menu</a></li>
+                        <li><a href="#reservations" class="text-gray-400 hover:text-amber-600 transition-colors">Reservations</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-amber-600 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold mb-6">Hours</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><span class="font-semibold text-white">Monday - Thursday:</span><br>12:00 PM - 10:00 PM</li>
+                        <li><span class="font-semibold text-white">Friday - Saturday:</span><br>12:00 PM - 11:00 PM</li>
+                        <li><span class="font-semibold text-white">Sunday:</span><br>12:00 PM - 9:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Warung Jowo. All rights reserved. Crafted with passion.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Swiper for menu sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const swipers = document.querySelectorAll('.menu-swiper');
+            swipers.forEach(swiper => {
+                new Swiper(swiper, {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    navigation: {
+                        nextEl: swiper.querySelector('.swiper-button-next'),
+                        prevEl: swiper.querySelector('.swiper-button-prev'),
+                    },
+                    pagination: {
+                        el: swiper.querySelector('.swiper-pagination'),
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 30,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 30,
+                        },
+                    },
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                });
+            });
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+      
+        function kirimReservasi(event) {
+    event.preventDefault();
+
+    // 1. Ambil data dari input
+    const nama = document.getElementById('res-nama').value;
+    const email = document.getElementById('res-email').value;
+    const hp = document.getElementById('res-hp').value;
+    const tanggal = document.getElementById('res-tanggal').value;
+    const waktu = document.getElementById('res-waktu').value;
+    const tamu = document.getElementById('res-tamu').value;
+    const pesan = document.getElementById('res-pesan').value || "-";
+
+    // 2. Setting Nomor WhatsApp Resto (Ganti dengan nomor lo, mulai dengan 62)
+    const noHpResto = "6285331132617"; 
+
+    // 3. Format Pesan (Pake %0A buat enter)
+    const text = `*RESERVASI WARUNG JOWO*%0A` +
+                 `--------------------------%0A` +
+                 `*Nama:* ${nama}%0A` +
+                 `*Email:* ${email}%0A` +
+                 `*No HP:* ${hp}%0A` +
+                 `*Tanggal:* ${tanggal}%0A` +
+                 `*Waktu:* ${waktu}%0A` +
+                 `*Jumlah Tamu:* ${tamu}%0A` +
+                 `*Catatan:* ${pesan}%0A%0A` +
+                 `Mohon konfirmasi ketersediaan mejanya ya, Matur Nuwun!`;
+
+    // 4. Redirect ke WhatsApp
+    const url = `https://wa.me/${noHpResto}?text=${text}`;
+    window.open(url, '_blank');
+}
+    </script>
+
+</body>
+</html>
