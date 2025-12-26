@@ -1,146 +1,84 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warung Jowo - Resto Kuliner Jawa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <style>
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            overflow-x: hidden;
-        }
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes zoomSlow {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .animate-float { animation: float 3s ease-in-out infinite; }
-        .animate-zoom { animation: zoomSlow 20s ease-in-out infinite; }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #fbbf24 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
-        }
-        
-        .hover-lift {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
-        }
-        
-        @media (hover: hover) {
-            .hover-lift:hover {
-                transform: translateY(-8px) scale(1.02);
-                box-shadow: 0 20px 40px rgba(217, 119, 6, 0.25);
-            }
-        }
-        
-        .swiper-button-next, .swiper-button-prev { 
-            color: #d97706; 
-            background: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .swiper-button-next:after, .swiper-button-prev:after {
-            font-size: 16px;
-            font-weight: bold;
-        }
-        
-        @media (max-width: 640px) {
-            .swiper-button-next, .swiper-button-prev {
-                width: 32px;
-                height: 32px;
-            }
-            .swiper-button-next:after, .swiper-button-prev:after {
-                font-size: 14px;
-            }
-        }
-        
-        .swiper-pagination-bullet {
-            width: 10px;
-            height: 10px;
-            background: #d4d4d4;
-            opacity: 1;
-        }
-        
-        .swiper-pagination-bullet-active { 
-            background: #d97706;
-            width: 24px;
-            border-radius: 5px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warung Jowo - Resto Kuliner Jawa</title>
 
-        .nav-underline {
-            position: relative;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
-        .nav-underline::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #d97706, #f59e0b);
-            transition: width 0.3s ease;
-        }
+<link href="./output.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-        .nav-underline:hover::after {
-            width: 100%;
-        }
+<style>
+body{font-family:'Poppins',sans-serif;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif}
 
-        .pattern-bg {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes zoomSlow{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
 
-        /* Mobile Menu Styles */
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
+.animate-fade-in-up{animation:fadeInUp .8s ease-out forwards}
+.animate-float{animation:float 3s ease-in-out infinite}
+.animate-zoom{animation:zoomSlow 20s ease-in-out infinite}
 
-        /* Better touch targets for mobile */
-        @media (max-width: 768px) {
-            button, a {
-                min-height: 44px;
-                min-width: 44px;
-            }
-        }
+.gradient-text{
+background:linear-gradient(135deg,#d97706,#f59e0b,#fbbf24);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent
+}
 
-        /* Prevent horizontal scroll */
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-    </style>
+.gradient-bg{
+background:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706)
+}
+
+.hover-lift{transition:transform .4s,box-shadow .4s}
+.hover-lift:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 40px rgba(217,119,6,.25)}
+
+.swiper-button-next,.swiper-button-prev{
+color:#d97706;background:#fff;width:40px;height:40px;border-radius:50%;
+box-shadow:0 4px 15px rgba(0,0,0,.2)
+}
+.swiper-button-next:after,.swiper-button-prev:after{font-size:16px;font-weight:bold}
+
+.swiper-pagination-bullet{background:#d4d4d4;opacity:1}
+.swiper-pagination-bullet-active{background:#d97706;width:24px;border-radius:5px}
+
+.nav-underline{position:relative}
+.nav-underline::after{
+content:"";position:absolute;bottom:-5px;left:0;width:0;height:2px;
+background:linear-gradient(90deg,#d97706,#f59e0b);transition:.3s
+}
+.nav-underline:hover::after{width:100%}
+
+/* ===== FIX UTAMA DI SINI ===== */
+.pattern-bg{
+position:relative;
+overflow:hidden;
+}
+.pattern-bg::before{
+content:"";
+position:absolute;
+inset:0;
+background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+pointer-events:none;
+z-index:0;
+}
+
+.pattern-bg > *{
+position:relative;
+z-index:1;
+}
+/* ============================ */
+
+html,body{max-width:100%;overflow-x:hidden}
+</style>
 </head>
+
 <body class="bg-gray-50 text-gray-900 antialiased">
 
     <!-- Navigation -->
@@ -198,7 +136,7 @@
     <!-- Hero -->
     <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0">
-            <img src="img/makananbg.webp" alt="Dining" class="w-full h-full object-cover animate-zoom">
+            <img src="../img/makananbg.webp" alt="Dining" class="w-full h-full object-cover animate-zoom">
             <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
         </div>
         <div class="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
@@ -242,7 +180,7 @@
                 </div>
                 <div class="relative mt-8 lg:mt-0">
                     <div class="absolute -inset-4 bg-gradient-to-r from-amber-400 to-orange-400 rounded-3xl opacity-20 blur-2xl"></div>
-                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Chef" class="relative rounded-2xl sm:rounded-3xl shadow-2xl w-full">
+                    <img src="../img/bg.webp" alt="Chef" class="relative rounded-2xl sm:rounded-3xl shadow-2xl w-full">
                 </div>
             </div>
         </div>
@@ -264,7 +202,7 @@
                         <div class="swiper-slide h-auto">
                             <div class="bg-white rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden hover-lift h-full flex flex-col border border-gray-100">
                                 <div class="relative h-48 sm:h-56 lg:h-64 overflow-hidden shrink-0">
-                                    <img src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bebek Goreng" class="w-full h-full object-cover">
+                                    <img src="../img/bebek.webp" alt="Bebek Goreng" class="w-full h-full object-cover">
                                     <div class="absolute top-3 sm:top-4 right-3 sm:right-4 bg-white/90 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm"><span class="text-amber-600 font-bold">★ 5.0</span></div>
                                     <div class="absolute top-3 sm:top-4 left-3 sm:left-4 bg-green-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Andalan Kami</div>
                                 </div>
@@ -278,7 +216,7 @@
                         <div class="swiper-slide h-auto">
                             <div class="bg-white rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden hover-lift h-full flex flex-col border border-gray-100">
                                 <div class="relative h-48 sm:h-56 lg:h-64 overflow-hidden shrink-0">
-                                    <img src="img/gado.webp" alt="Gado-gado" class="w-full h-full object-cover">
+                                    <img src="../img/gado.webp" alt="Gado-gado" class="w-full h-full object-cover">
                                     <div class="absolute top-3 sm:top-4 right-3 sm:right-4 bg-white/90 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm"><span class="text-amber-600 font-bold">★ 4.9</span></div>
                                     <div class="absolute top-3 sm:top-4 left-3 sm:left-4 bg-green-600 text-white px-2 sm:px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Vegetarian</div>
                                 </div>
@@ -292,7 +230,7 @@
                         <div class="swiper-slide h-auto">
                             <div class="bg-white rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden hover-lift h-full flex flex-col border border-gray-100">
                                 <div class="relative h-48 sm:h-56 lg:h-64 overflow-hidden shrink-0">
-                                    <img src="img/rujak.webp" alt="Rujak Cingur" class="w-full h-full object-cover">
+                                    <img src="../img/rujak.webp" alt="Rujak Cingur" class="w-full h-full object-cover">
                                     <div class="absolute top-3 sm:top-4 right-3 sm:right-4 bg-white/90 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm"><span class="text-amber-600 font-bold">★ 4.8</span></div>
                                 </div>
                                 <div class="p-4 sm:p-6 flex flex-col flex-grow text-center">
@@ -305,7 +243,7 @@
                         <div class="swiper-slide h-auto">
                             <div class="bg-white rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden hover-lift h-full flex flex-col border border-gray-100">
                                 <div class="relative h-48 sm:h-56 lg:h-64 overflow-hidden shrink-0">
-                                    <img src="img/rawon.webp" alt="Rawon" class="w-full h-full object-cover">
+                                    <img src="../img/rawon.webp" alt="Rawon" class="w-full h-full object-cover">
                                     <div class="absolute top-3 sm:top-4 right-3 sm:right-4 bg-white/90 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm"><span class="text-amber-600 font-bold">★ 4.8</span></div>
                                 </div>
                                 <div class="p-4 sm:p-6 flex flex-col flex-grow text-center">
@@ -333,25 +271,25 @@
             </div>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
                 <div class="relative group overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl hover-lift h-48 sm:h-64 lg:h-80">
-                    <img src="img/galery1.webp" alt="Restaurant interior" class="w-full h-full object-cover">
+                    <img src="../img/galery1.webp" alt="Restaurant interior" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
                         <p class="text-white font-semibold text-sm sm:text-base lg:text-lg">Elegant Interior</p>
                     </div>
                 </div>
                 <div class="relative group overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl hover-lift h-48 sm:h-64 lg:h-80">
-                    <img src="img/galerry2.webp" alt="Table setting" class="w-full h-full object-cover">
+                    <img src="../img/galerry2.webp" alt="Table setting" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
                         <p class="text-white font-semibold text-sm sm:text-base lg:text-lg">Perfect Settings</p>
                     </div>
                 </div>
                 <div class="relative group overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl hover-lift h-48 sm:h-64 lg:h-80">
-                    <img src="img/galery3.webp" alt="Chef preparing" class="w-full h-full object-cover">
+                    <img src="../img/galery3.webp" alt="Chef preparing" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
                         <p class="text-white font-semibold text-sm sm:text-base lg:text-lg">Master Chefs</p>
                     </div>
                 </div>
                 <div class="relative group overflow-hidden rounded-2xl sm:rounded-3xl shadow-xl hover-lift h-48 sm:h-64 lg:h-80">
-                    <img src="img/5-restoran-jawa-di-bekasi-ini-punya-rawon-hingga-gudeg-yang-mantap-poll.webp" alt="Decoration" class="w-full h-full object-cover">
+                    <img src="../img/5-restoran-jawa-di-bekasi-ini-punya-rawon-hingga-gudeg-yang-mantap-poll.webp" alt="Decoration" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 sm:p-6">
                         <p class="text-white font-semibold text-sm sm:text-base lg:text-lg">Decoration</p>
                     </div>
@@ -471,15 +409,11 @@
                 </div>
             </div>
 
-            <div class="w-full h-64 sm:h-80 lg:h-96 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.973479632832!2d110.3731872!3d-7.7926527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57863f82f255%3A0x6ec0c55138f6b063!2sMalioboro%20Yogyakarta!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
-                    class="w-full h-full border-0" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
+            <div id="map-container"
+  class="w-full h-64 sm:h-80 lg:h-96 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white bg-gray-200 flex items-center justify-center text-gray-500">
+  Memuat peta...
+</div>
+
         </div>
     </section>
 
@@ -530,6 +464,26 @@
     </footer>
 
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+  const mapContainer = document.getElementById("map-container");
+
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      mapContainer.innerHTML = `
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.973479632832!2d110.3731872!3d-7.7926527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57863f82f255%3A0x6ec0c55138f6b063!2sMalioboro%20Yogyakarta!5e0!3m2!1sid!2sid!4v1700000000000"
+          class="w-full h-full border-0"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>`;
+      observer.disconnect();
+    }
+  }, { threshold: 0.2 });
+
+  observer.observe(mapContainer);
+});
+
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
